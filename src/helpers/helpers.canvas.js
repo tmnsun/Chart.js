@@ -47,16 +47,16 @@ var exports = module.exports = {
 	drawPoint: function(ctx, style, radius, x, y) {
 		var type, edgeLength, xOffset, yOffset, height, size;
 
+		if (isNaN(radius) || radius <= 0) {
+			return;
+		}
+
 		if (style && typeof style === 'object') {
 			type = style.toString();
 			if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
 				ctx.drawImage(style, x - style.width / 2, y - style.height / 2, style.width, style.height);
 				return;
 			}
-		}
-
-		if (isNaN(radius) || radius <= 0) {
-			return;
 		}
 
 		switch (style) {
